@@ -1,0 +1,16 @@
+<html>
+<head><title>Local video playback</title></head>
+<body>
+    <span>My token: </span><strong id="text-peer"></strong>
+    <br />
+    <span>Peer token: </span><input type="text" id="text">
+    <br />
+    <button onclick="connect()">Connect</button>
+    <br />
+    <br />
+    <audio id="localAudio" autoplay playsinline controls="false" ></audio>
+
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

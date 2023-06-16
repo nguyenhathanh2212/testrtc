@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - peer-server
+    restart: always
+    environment:
+      DOMAINS: 'webrtc.example.com -> http://peer-server:80'
+
+  peer-server:
+    build:
+      context: .
+      dockerfile: ./peer-server/Dockerfile
+    image: peer-server
+    restart: always
+    ports:
+      - 8089:80
