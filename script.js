@@ -1,4 +1,31 @@
-var peer = new Peer();
+var peer = new Peer({
+  config: {
+      'iceServers':[
+        {
+          url: 'stun:global.stun.twilio.com:3478',
+          urls: 'stun:global.stun.twilio.com:3478'
+        },
+        {
+          url: 'turn:global.turn.twilio.com:3478?transport=udp',
+          username: '31eb6782eba4e16884136d09d7e9b1c74abd0c1838f1554e39429f43df4062d8',
+          urls: 'turn:global.turn.twilio.com:3478?transport=udp',
+          credential: 'fpwdgRw9Xf69IuulNBwdtB1MHMgQZa9z8rUhNfAUY1M='
+        },
+        {
+          url: 'turn:global.turn.twilio.com:3478?transport=tcp',
+          username: '31eb6782eba4e16884136d09d7e9b1c74abd0c1838f1554e39429f43df4062d8',
+          urls: 'turn:global.turn.twilio.com:3478?transport=tcp',
+          credential: 'fpwdgRw9Xf69IuulNBwdtB1MHMgQZa9z8rUhNfAUY1M='
+        },
+        {
+          url: 'turn:global.turn.twilio.com:443?transport=tcp',
+          username: '31eb6782eba4e16884136d09d7e9b1c74abd0c1838f1554e39429f43df4062d8',
+          urls: 'turn:global.turn.twilio.com:443?transport=tcp',
+          credential: 'fpwdgRw9Xf69IuulNBwdtB1MHMgQZa9z8rUhNfAUY1M='
+        }
+      ]
+  }
+});
 const stream = navigator.mediaDevices.getUserMedia({ video: false, audio: true });
 peer.on('open', function () {
   console.log('peer:', peer.id);
